@@ -29,7 +29,7 @@ public class PostTransactionCommand implements Command{
 			response.getWriter().write("Transação realizada.");
 		}catch(IllegalArgumentException e) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			response.getWriter().write(e.getMessage());
+			response.getWriter().write("Argumentos inválidos para realizar a transação, consulte a documentação da API.");
 		}catch(JsonSyntaxException e) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			response.getWriter().write("JSON mal formado ou argumento ausente, consulte a documentação da API.");

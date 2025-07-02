@@ -1,5 +1,7 @@
 {
 	"chain": [
-		"api.transactions.dsw2.controller.handler.implementation.PostTransactionHandler"
+		"api.transactions.dsw2.controller.handler.implementation.PostTransactionHandler",
+		"api.transactions.dsw2.controller.handler.implementation.GetTransactionHandler",
+		"api.transactions.dsw2.controller.handler.implementation.DeleteTransactionHandler"
 	]
 }
