@@ -1,14 +1,12 @@
 package api.transactions.dsw2.model.entity;
 
-import java.time.LocalDateTime;
-
 public class Transaction {
 	
 	private String description;
 	private double value;
 	private TransactionType type;
 	private String category;
-	private LocalDateTime date;
+	private String date;
 	
 	public Transaction() {
 		
@@ -16,13 +14,13 @@ public class Transaction {
 	
 	
 
-	public Transaction(String description, double value, TransactionType type, String category, LocalDateTime date) {
+	public Transaction(String description, double value, TransactionType type, String category, String date) {
 		super();
-		this.description = description;
-		this.value = value;
-		this.type = type;
-		this.category = category;
-		this.date = date;
+		setDescription(description);
+		setValue(value);
+		setType(type);
+		setCategory(category);
+		setDate(date);
 	}
 
 
@@ -58,11 +56,11 @@ public class Transaction {
 		this.category = category;
 	}
 
-	public LocalDateTime getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	
