@@ -22,6 +22,7 @@ public class TransactionDao {
 	private static final String INSERT = "INSERT INTO transaction (description, value, type, category, date) VALUES (?, ?, ?, ?, ?)";
 	private static final String FIND_BY_ID = "SELECT * FROM transaction WHERE id = ?";
 	private static final String DELETE = "DELETE FROM transaction WHERE id = ?";
+	private static final String UPDATE = "UPDATE transaction SET description = ?, value = ?, type = ?, category = ?, date = ? WHERE id = ?";
 	
 	public TransactionDao() throws NamingException{
 		InitialContext context = new InitialContext();
@@ -81,6 +82,25 @@ public class TransactionDao {
 				PreparedStatement statement = connection.prepareStatement(DELETE)){
 			
 			statement.setInt(1, id);
+			rows = statement.executeUpdate();
+		}
+		
+		return rows > 0;
+	}
+	
+	public boolean update(int id, Transaction transaction) throws SQLException{
+		int rows = 0;
+		
+		try(Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE)){
+			
+			statement.setString(1, transaction.getDescription());
+			statement.setDouble(2, transaction.getValue());
+			statement.setString(3, transaction.getType().name());
+			statement.setString(4, transaction.getCategory());
+			statement.setString(5, transaction.getDate());
+			statement.setInt(6, id);
+			
 			rows = statement.executeUpdate();
 		}
 		
