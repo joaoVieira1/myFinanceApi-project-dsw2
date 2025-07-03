@@ -26,7 +26,7 @@ public class PostTransactionCommand implements Command{
 			dao.insert(transaction);
 			
 			response.setStatus(HttpServletResponse.SC_CREATED);
-			response.getWriter().write("Transação realizada.");
+			response.getWriter().write("Transação cadastrada com sucesso.");
 		}catch(IllegalArgumentException e) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			response.getWriter().write("Argumentos inválidos para realizar a transação, consulte a documentação da API.");
