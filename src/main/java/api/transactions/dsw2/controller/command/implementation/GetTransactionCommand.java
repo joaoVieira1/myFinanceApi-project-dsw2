@@ -15,7 +15,7 @@ public class GetTransactionCommand implements Command{
 		
 		int id = Integer.parseInt(request.getPathInfo().substring(1));
 		TransactionDao dao = new TransactionDao();
-		Transaction transaction = dao.find_by_id(id);
+		Transaction transaction = dao.findById(id);
 		
 		if(transaction == null) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
