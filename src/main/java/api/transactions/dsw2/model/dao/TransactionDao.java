@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -156,4 +158,27 @@ public class TransactionDao {
 
 		return list;
 	}
+	
+	public Map<String, Double> sumByCategory(TransactionType type) throws SQLException {
+	    Map<String, Double> result = new LinkedHashMap<>();
+
+	    String sql = "SELECT category, SUM(value) as total " +
+	                 "FROM transaction WHERE type = ? GROUP BY category";
+
+	    try (Connection conn = dataSource.getConnection();
+	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+	        stmt.setString(1, type.name());
+
+	        ResultSet rs = stmt.executeQuery();
+	        while (rs.next()) {
+	            String category = rs.getString("category");
+	            double total = rs.getDouble("total");
+	            result.put(category, total);
+	        }
+	    }
+
+	    return result;
+	}
+	
 }
