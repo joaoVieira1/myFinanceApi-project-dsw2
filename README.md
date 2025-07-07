@@ -52,3 +52,26 @@ MyFinance é uma aplicação web para **gerenciamento financeiro pessoal**, dese
 - Painel responsivo e informativo
 
 ---
+
+## 📷 Capturas de Tela 
+
+![imagem1](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/1.png)
+![imagem2](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/2.png)
+![imagem3](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/3.png)
+![imagem4](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/4.png)
+![imagem5](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/5.png)
+![imagem6](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/6.png)
+![imagem7](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/7.png)
+![imagem8](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/8.png)
+
+
+---
+
+## 👨‍💻 Desenvolvedor
+
+**João Vieira**  
+Estudante de Análise e Desenvolvimento de Sistemas | Desenvolvimento Android  
+
+---
+
+---
