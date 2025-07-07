@@ -22,7 +22,7 @@ public class PostTransactionCommand implements Command{
 		
 		try {
 			Transaction transaction = new Gson().fromJson(reader, Transaction.class);
-			service.validate(transaction.getDate(), transaction.getValue(), transaction.getType());
+			service.validate(transaction);
 			dao.insert(transaction);
 			
 			response.setStatus(HttpServletResponse.SC_CREATED);

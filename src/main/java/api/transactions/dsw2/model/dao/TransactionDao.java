@@ -60,7 +60,8 @@ public class TransactionDao {
 
 			if (result.next()) {
 				Transaction transaction = new Transaction();
-
+				
+				transaction.setId(result.getInt("id"));
 				transaction.setDescription(result.getString("description"));
 				transaction.setValue(result.getDouble("value"));
 				String typeString = result.getString("type");
@@ -127,32 +128,33 @@ public class TransactionDao {
 
 		sql.append(" ORDER BY date DESC LIMIT ? OFFSET ?");
 
-		try (Connection conn = dataSource.getConnection();
-				PreparedStatement stmt = conn.prepareStatement(sql.toString())) {
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection.prepareStatement(sql.toString())) {
 
 			int index = 1;
 
 			if (month != null)
-				stmt.setInt(index++, month);
+				statement.setInt(index++, month);
 			if (year != null)
-				stmt.setInt(index++, year);
+				statement.setInt(index++, year);
 			if (type != null)
-				stmt.setString(index++, type.name());
+				statement.setString(index++, type.name());
 			if (category != null && !category.isBlank())
-				stmt.setString(index++, category);
+				statement.setString(index++, category);
 
-			stmt.setInt(index++, limit);
-			stmt.setInt(index++, offset);
+			statement.setInt(index++, limit);
+			statement.setInt(index++, offset);
 
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-				Transaction t = new Transaction();
-				t.setDescription(rs.getString("description"));
-				t.setValue(rs.getDouble("value"));
-				t.setType(TransactionType.valueOf(rs.getString("type")));
-				t.setCategory(rs.getString("category"));
-				t.setDate(rs.getString("date"));
-				list.add(t);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				Transaction transaction = new Transaction();
+				transaction.setId(result.getInt("id"));
+				transaction.setDescription(result.getString("description"));
+				transaction.setValue(result.getDouble("value"));
+				transaction.setType(TransactionType.valueOf(result.getString("type")));
+				transaction.setCategory(result.getString("category"));
+				transaction.setDate(result.getString("date"));
+				list.add(transaction);
 			}
 		}
 
@@ -160,25 +162,25 @@ public class TransactionDao {
 	}
 	
 	public Map<String, Double> sumByCategory(TransactionType type) throws SQLException {
-	    Map<String, Double> result = new LinkedHashMap<>();
+	    Map<String, Double> results = new LinkedHashMap<>();
 
 	    String sql = "SELECT category, SUM(value) as total " +
 	                 "FROM transaction WHERE type = ? GROUP BY category";
 
-	    try (Connection conn = dataSource.getConnection();
-	         PreparedStatement stmt = conn.prepareStatement(sql)) {
+	    try (Connection connection= dataSource.getConnection();
+	         PreparedStatement statement = connection.prepareStatement(sql)) {
 
-	        stmt.setString(1, type.name());
+	        statement.setString(1, type.name());
 
-	        ResultSet rs = stmt.executeQuery();
-	        while (rs.next()) {
-	            String category = rs.getString("category");
-	            double total = rs.getDouble("total");
-	            result.put(category, total);
+	        ResultSet result = statement.executeQuery();
+	        while (result.next()) {
+	            String category = result.getString("category");
+	            double total = result.getDouble("total");
+	            results.put(category, total);
 	        }
 	    }
 
-	    return result;
+	    return results;
 	}
 	
 }

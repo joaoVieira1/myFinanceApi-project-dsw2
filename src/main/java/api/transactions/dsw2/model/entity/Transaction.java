@@ -2,6 +2,7 @@ package api.transactions.dsw2.model.entity;
 
 public class Transaction {
 	
+	private int id;
 	private String description;
 	private double value;
 	private TransactionType type;
@@ -11,11 +12,10 @@ public class Transaction {
 	public Transaction() {
 		
 	}
-	
-	
 
-	public Transaction(String description, double value, TransactionType type, String category, String date) {
+	public Transaction(int id, String description, double value, TransactionType type, String category, String date) {
 		super();
+		setId(id);
 		setDescription(description);
 		setValue(value);
 		setType(type);
@@ -62,6 +62,14 @@ public class Transaction {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

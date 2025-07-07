@@ -24,7 +24,7 @@ public class PutTransactionCommand implements Command{
 		
 		try {
 			Transaction updateTransaction = new Gson().fromJson(reader, Transaction.class);
-			service.validate(updateTransaction.getDate(), updateTransaction.getValue(), updateTransaction.getType());
+			service.validate(updateTransaction);
 			
 			if(dao.update(id, updateTransaction)) {
 				response.setStatus(HttpServletResponse.SC_OK);
