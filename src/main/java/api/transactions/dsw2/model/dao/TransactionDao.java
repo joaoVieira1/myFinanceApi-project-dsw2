@@ -126,7 +126,7 @@ public class TransactionDao {
 		if (category != null && !category.isBlank())
 			sql.append(" AND category = ?");
 
-		sql.append(" ORDER BY date DESC LIMIT ? OFFSET ?");
+		sql.append(" ORDER BY id ASC LIMIT ? OFFSET ?");
 
 		try (Connection connection = dataSource.getConnection();
 				PreparedStatement statement = connection.prepareStatement(sql.toString())) {
