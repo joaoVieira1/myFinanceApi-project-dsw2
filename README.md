@@ -55,6 +55,8 @@ MyFinance é uma aplicação web para **gerenciamento financeiro pessoal**, dese
 
 ## 📷 Capturas de Tela 
 
+- Vídeo: https://www.youtube.com/watch?v=X5QFmNOf-BQ
+
 ![imagem1](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/1.png)
 ![imagem2](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/2.png)
 ![imagem3](https://github.com/joaoVieira1/myFinanceApi-project-dsw2/blob/main/pictures/3.png)
